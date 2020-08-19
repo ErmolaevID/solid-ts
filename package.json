@@ -1,0 +1,25 @@
+{
+  "name": "solid-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErmolaevID/solid-ts.git"
+  },
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "keywords": [
+    "solid"
+  ],
+  "author": "Ermolaev Ilya <Ermolaev.ID@yandex.ru> (https://github.com/ErmolaevID)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ErmolaevID/solid-ts/issues"
+  },
+  "homepage": "https://github.com/ErmolaevID/solid-ts#readme",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}
