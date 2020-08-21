@@ -94,3 +94,6 @@ namespace correct {
     return square.getArea() === 100 ? "pass" : "failed";
   }
 }
+
+
+// The example is taken from: https://ota-solid.now.sh/lsp
