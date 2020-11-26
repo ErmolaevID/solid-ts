@@ -59,7 +59,7 @@ namespace incorrect {
   const res = new AreaCalculator([new Square(10), new Circle(5)]);
   console.log(res.calculateAllArea());
 
-  // To add new shapes you need to change the existing calculateAllArea method
+  // To add new shapes you need to change the existing calculateAllArea method in AreaCalculator class
 }
 
 namespace correct {
@@ -109,7 +109,7 @@ namespace correct {
   const res = new AreaCalculator([new Square(10), new Circle(5)]);
   console.log(res.calculateAllArea());
 
-  // To add new shapes you do not need to change the existing calculateArea method,
+  // To add new shapes you do not need to change the existing calculateAllArea method in AreaCalculator class,
   // just create a new class extends Shape
 }
 
