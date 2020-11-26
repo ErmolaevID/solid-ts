@@ -58,4 +58,5 @@ namespace correct {
   // and do not need to change Order class
 }
 
-// The example is taken from: https://refactoring.guru/ru/design-patterns/book (rus)
+// The example is taken from: https://refactoring.guru/design-patterns/book (eng)
+//                            https://refactoring.guru/ru/design-patterns/book (rus)
