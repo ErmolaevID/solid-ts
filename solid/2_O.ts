@@ -5,27 +5,48 @@ enum shapesTypes {
 
 namespace incorrect {
   class Square {
-    sideSize: number;
-    type = shapesTypes.square;
+    private _sideSize: number;
+    private _type = shapesTypes.square;
+
     constructor(sideSize: number) {
-      this.sideSize = sideSize;
-    } 
+      this._sideSize = sideSize;
+    }
+
+    public get sideSize(): number {
+      return this._sideSize;
+    }
+
+    public get type(): shapesTypes {
+      return this._type;
+    }
   }
+
   class Circle {
-    radiusSize: number;
-    type = shapesTypes.circle;
+    private _radiusSize: number;
+    private _type = shapesTypes.circle;
+
     constructor(radiusSize: number) {
-      this.radiusSize = radiusSize;
+      this._radiusSize = radiusSize;
+    }
+
+    public get radiusSize(): number {
+      return this._radiusSize;
+    }
+
+    public get type(): shapesTypes {
+      return this._type;
     }
   }
 
   class AreaCalculator {
-    shapes = [];
-    constructor(shpaes: object[]) {
-      this.shapes = shpaes;
+    private _shapes: any[] = [];
+
+    constructor(shapes: any[]) {
+      this._shapes = shapes;
     }
+
     public calculateAllArea() {
-      return this.shapes.reduce((acc: number, shape) => {
+      return this._shapes.reduce((acc: number, shape: any) => {
         if (shape.type === shapesTypes.circle) {
           acc += (shape.radiusSize ** 2) * Math.PI;
         } else if (shape.type === shapesTypes.square) {
@@ -38,7 +59,7 @@ namespace incorrect {
   const res = new AreaCalculator([new Square(10), new Circle(5)]);
   console.log(res.calculateAllArea());
 
-  // To add new shapes you need to change the existing calculateArea method
+  // To add new shapes you need to change the existing calculateAllArea method
 }
 
 namespace correct {
@@ -47,41 +68,49 @@ namespace correct {
   }
 
   class Square extends Shape {
-    sideSize: number;
+    private _sideSize: number;
+
     constructor(sideSize: number) {
       super();
-      this.sideSize = sideSize;
+      this._sideSize = sideSize;
     }
+
     public getArea(): number {
-      return this.sideSize ** 2;
+      return this._sideSize ** 2;
     }
   }
+
   class Circle extends Shape {
-    radiusSize: number;
+    private _radiusSize: number;
+
     constructor(radiusSize: number) {
       super();
-      this.radiusSize = radiusSize;
+      this._radiusSize = radiusSize;
     }
+
     public getArea(): number {
-      return (this.radiusSize ** 2) * Math.PI;
+      return (this._radiusSize ** 2) * Math.PI;
     }
   }
 
   class AreaCalculator {
-    shapes = [];
-    sum: number = 0;
-    constructor(shpaes: object[]) {
-      this.shapes = shpaes;
+    private _shapes: Shape[] = [];
+    private _sum: number = 0;
+
+    constructor(shapes: Shape[]) {
+      this._shapes = shapes;
     }
+
     public calculateAllArea() {
-      this.shapes.map(e => this.sum += e.getArea());
-      return this.sum;
+      this._shapes.map((e: Shape) => this._sum += e.getArea());
+      return this._sum;
     }
   }
   const res = new AreaCalculator([new Square(10), new Circle(5)]);
   console.log(res.calculateAllArea());
 
-  // To add new shapes you do not need to change the existing calculateArea method
+  // To add new shapes you do not need to change the existing calculateArea method,
+  // just create a new class extends Shape
 }
 
 
