@@ -34,7 +34,7 @@ namespace incorrect {
       // ...
     }
 
-    storeFile(fileName: string): void {
+    public storeFile(fileName: string): void {
       // ...
     }
 
@@ -95,7 +95,7 @@ namespace correct {
       // ...
     }
 
-    storeFile(fileName: string): void {
+    public storeFile(fileName: string): void {
       // ...
     }
   }
