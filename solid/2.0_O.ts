@@ -1,4 +1,4 @@
-enum shapesTypes {
+enum Shape {
   square = "SQUARE",
   circle = "CIRCLE"
 }
@@ -6,7 +6,7 @@ enum shapesTypes {
 namespace incorrect {
   class Square {
     private _sideSize: number;
-    private _type = shapesTypes.square;
+    private _type = Shape.square;
 
     constructor(sideSize: number) {
       this._sideSize = sideSize;
@@ -16,14 +16,14 @@ namespace incorrect {
       return this._sideSize;
     }
 
-    public get type(): shapesTypes {
+    public get type(): Shape {
       return this._type;
     }
   }
 
   class Circle {
     private _radiusSize: number;
-    private _type = shapesTypes.circle;
+    private _type = Shape.circle;
 
     constructor(radiusSize: number) {
       this._radiusSize = radiusSize;
@@ -33,7 +33,7 @@ namespace incorrect {
       return this._radiusSize;
     }
 
-    public get type(): shapesTypes {
+    public get type(): Shape {
       return this._type;
     }
   }
@@ -47,9 +47,9 @@ namespace incorrect {
 
     public calculateAllArea() {
       return this._shapes.reduce((acc: number, shape: any) => {
-        if (shape.type === shapesTypes.circle) {
+        if (shape.type === Shape.circle) {
           acc += (shape.radiusSize ** 2) * Math.PI;
-        } else if (shape.type === shapesTypes.square) {
+        } else if (shape.type === Shape.square) {
           acc += shape.sideSize ** 2;
         }
         return acc;
