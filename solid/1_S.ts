@@ -1,28 +1,16 @@
 namespace incorrect {
   class Book {
-    private _title: string;
-    private _author: string;
-    private _currentPage: number;
+    private currentPage = 1;
 
-    public get title(): string {
-      return this._title;
-    }
-    public get author(): string {
-      return this._author;
-    }
-    public get currentPage(): number {
-      return this._currentPage;
+    constructor(
+      private readonly title: string,
+      private readonly author: string
+    ) {}
+
+    public turnPage() {
+      this.currentPage++;
     }
 
-    constructor(title: string, author: string) {
-      this._title = title;
-      this._author = author;
-      this._currentPage = 1;
-    }
-
-    public turnPage(): void {
-      this._currentPage++;
-    }
     public printCurrentPage(): string {
       return "page content";
     }
@@ -32,45 +20,32 @@ namespace incorrect {
 
 namespace correct {
   class Book {
-    private _title: string;
-    private _author: string;
-    private _currentPage: number;
+    private currentPage = 1;
 
-    public get title(): string {
-      return this._title;
-    }
-    public get author(): string {
-      return this._author;
-    }
-    public get currentPage(): number {
-      return this._currentPage;
-    }
+    constructor(
+      private readonly title: string,
+      private readonly  author: string)
+    {}
 
-
-    constructor(title: string, author: string) {
-      this._title = title;
-      this._author = author;
-      this._currentPage = 1;
-    }
-
-    public turnPage(): void {
-      this._currentPage++;
+    public turnPage() {
+      this.currentPage++;
     }
   }
-  
-  abstract class Printer {
-    abstract print(content: string): void;
+
+  interface Printer {
+    print: (content: string) => string;
   }
 
-  class PlainTextPrinter extends Printer {
-    public print(content: string): string {
+  class PlainTextPrinter implements Printer {
+    public print(content: string) {
       return content;
     }
   }
-  class HtmlPrinter extends Printer {
-    public print(content: string): string {
+
+  class HtmlPrinter implements Printer {
+    public print(content: string) {
       return `<p>${content}</p>`;
     }
   }
-  //  If you need new printer you can create new class which extends abstract class Printer
+  //  If you need new printer you can create new class which implements Printer interface
 }
